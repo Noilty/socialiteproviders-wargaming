@@ -1,7 +1,6 @@
 {
 	"name": "noilty/socialiteproviders-wargaming",
 	"description": "Wargaming OAuth2 Provider for Laravel Socialite",
-	"version": "1.0.1",
 	"license": "MIT",
 	"authors": [
 		{
