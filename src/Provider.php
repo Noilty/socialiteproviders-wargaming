@@ -15,22 +15,26 @@ class Provider extends AbstractProvider
 
     protected $stateless = true;
 
-    protected function getCognitoUrl(): string
+    protected function getCognitoUrl()
     {
-        return env('WARGAMING_HOST', 'https://api.worldoftanks.eu/wot');
+        if (!in_array($domain = $this->request->domain, ['eu', 'com', 'asia'])) {
+            throw new InvalidArgumentException();
+        }
+
+        return 'https://api.worldoftanks.' . $domain . '/wot';
     }
 
-    protected function getAuthUrl($state): string
+    protected function getAuthUrl($state)
     {
         return $this->buildAuthUrlFromBase($this->getCognitoUrl() . '/auth/login/', $state);
     }
 
-    protected function getTokenUrl(): string
+    protected function getTokenUrl()
     {
         return '';
     }
 
-    protected function getCodeFields($state = null): array
+    protected function getCodeFields($state = null)
     {
         return array_merge([
             'application_id' => $this->clientId,
