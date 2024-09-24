@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Noilty\SocialiteProviders\Wargaming;
 
+use GuzzleHttp\Exception\InvalidArgumentException;
 use Illuminate\Support\Arr;
 use Laravel\Socialite\Two\InvalidStateException;
 use SocialiteProviders\Manager\OAuth2\AbstractProvider;
